@@ -24,6 +24,7 @@ module.exports = function (pool) {
                                 list_menu: [],
                                 price_allmenu: [],
                                 qty_allorder: [],
+                                // .reduce() to get sum in array
                         total_allorder: data.rows.reduce((a, b) => a + (b['total_order'] || 0), 0)
                     }
                     data.rows.forEach(e => {
