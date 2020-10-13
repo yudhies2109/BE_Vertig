@@ -10,7 +10,7 @@ this is nodelist API with nodejs as a programming language & postgreSQL as datab
 ## Database Side
 
 > databases attached in folder 'databases'
-> import database 
+> import database in posgreSQL
 
 ## Server Side
 
