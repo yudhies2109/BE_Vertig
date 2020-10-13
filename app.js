@@ -15,7 +15,7 @@ const pool = new Pool ({
 })
 
 var indexRouter = require('./routes/index')(pool);
-var usersRouter = require('./routes/users');
+var restaurantRouter = require('./routes/restaurants')(pool);
 let cors = require('cors');
 
 var app = express();
@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/menus', restaurantRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
