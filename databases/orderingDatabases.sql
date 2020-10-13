@@ -5,7 +5,7 @@
 -- Dumped from database version 11.9 (Ubuntu 11.9-1.pgdg18.04+1)
 -- Dumped by pg_dump version 11.9 (Ubuntu 11.9-1.pgdg18.04+1)
 
--- Started on 2020-10-13 11:10:29 WIB
+-- Started on 2020-10-13 11:13:04 WIB
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -398,13 +398,15 @@ ALTER TABLE ONLY public.tags ALTER COLUMN id_restaurant SET DEFAULT nextval('pub
 -- Data for Name: menu; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.menu VALUES (1, 'Ayam Bakar                                                                                                                                                                                              ');
-INSERT INTO public.menu VALUES (2, 'Ayam Goreng                                                                                                                                                                                             ');
-INSERT INTO public.menu VALUES (3, 'Ayam Bakar Bekakak                                                                                                                                                                                      ');
-INSERT INTO public.menu VALUES (5, 'Nasi Goreng special                                                                                                                                                                                     ');
-INSERT INTO public.menu VALUES (6, 'Susu Murni aneka rasa                                                                                                                                                                                   ');
-INSERT INTO public.menu VALUES (7, 'Mie Goreng special                                                                                                                                                                                      ');
-INSERT INTO public.menu VALUES (8, 'Mie rebus special                                                                                                                                                                                       ');
+COPY public.menu (id_menu, list_menu) FROM stdin;
+1	Ayam Bakar                                                                                                                                                                                              
+2	Ayam Goreng                                                                                                                                                                                             
+3	Ayam Bakar Bekakak                                                                                                                                                                                      
+5	Nasi Goreng special                                                                                                                                                                                     
+6	Susu Murni aneka rasa                                                                                                                                                                                   
+7	Mie Goreng special                                                                                                                                                                                      
+8	Mie rebus special                                                                                                                                                                                       
+\.
 
 
 --
@@ -413,10 +415,12 @@ INSERT INTO public.menu VALUES (8, 'Mie rebus special                           
 -- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.orders VALUES (1, 'ayam bakar madu                                                                                                                                       ', 2, 'yudhis                                                                                              ', 1);
-INSERT INTO public.orders VALUES (2, 'without petai                                                                                                                                         ', 1, 'rizky                                                                                               ', 6);
-INSERT INTO public.orders VALUES (3, 'goreng matang                                                                                                                                         ', 3, 'yudhis                                                                                              ', 2);
-INSERT INTO public.orders VALUES (4, 'telur setengah matang                                                                                                                                 ', 4, 'angri                                                                                               ', 8);
+COPY public.orders (id_order, req_order, qty_order, buyer_name, id_spec_restaurant) FROM stdin;
+1	ayam bakar madu                                                                                                                                       	2	yudhis                                                                                              	1
+2	without petai                                                                                                                                         	1	rizky                                                                                               	6
+3	goreng matang                                                                                                                                         	3	yudhis                                                                                              	2
+4	telur setengah matang                                                                                                                                 	4	angri                                                                                               	8
+\.
 
 
 --
@@ -425,9 +429,11 @@ INSERT INTO public.orders VALUES (4, 'telur setengah matang                     
 -- Data for Name: restaurants; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.restaurants VALUES (1, 'Ayam Bakar & Goreng "ABG"                                                                                                       ', 'Jl. Taman Safari - cibereum                                                                                                                           ', '+627334842');
-INSERT INTO public.restaurants VALUES (2, 'cimory                                                                                                                          ', 'Jl. Raya Bogor                                                                                                                                        ', '+628392734');
-INSERT INTO public.restaurants VALUES (3, 'mieXp                                                                                                                           ', 'Jl. Raya Karawang                                                                                                                                     ', '++627384923');
+COPY public.restaurants (id_restaurant, nama_restaurant, almt_restaurant, nmr_tlpn) FROM stdin;
+1	Ayam Bakar & Goreng "ABG"                                                                                                       	Jl. Taman Safari - cibereum                                                                                                                           	+627334842
+2	cimory                                                                                                                          	Jl. Raya Bogor                                                                                                                                        	+628392734
+3	mieXp                                                                                                                           	Jl. Raya Karawang                                                                                                                                     	++627384923
+\.
 
 
 --
@@ -436,15 +442,17 @@ INSERT INTO public.restaurants VALUES (3, 'mieXp                                
 -- Data for Name: specific_restaurant; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.specific_restaurant VALUES (1, 1, 1, 15000);
-INSERT INTO public.specific_restaurant VALUES (2, 1, 2, 20000);
-INSERT INTO public.specific_restaurant VALUES (3, 1, 3, 55000);
-INSERT INTO public.specific_restaurant VALUES (4, 2, 1, 20000);
-INSERT INTO public.specific_restaurant VALUES (5, 2, 6, 20000);
-INSERT INTO public.specific_restaurant VALUES (6, 2, 5, 23000);
-INSERT INTO public.specific_restaurant VALUES (7, 3, 5, 20000);
-INSERT INTO public.specific_restaurant VALUES (8, 3, 7, 15000);
-INSERT INTO public.specific_restaurant VALUES (9, 3, 8, 20000);
+COPY public.specific_restaurant (id_spec_restaurant, id_restaurant, id_menu, price_menu) FROM stdin;
+1	1	1	15000
+2	1	2	20000
+3	1	3	55000
+4	2	1	20000
+5	2	6	20000
+6	2	5	23000
+7	3	5	20000
+8	3	7	15000
+9	3	8	20000
+\.
 
 
 --
@@ -453,12 +461,14 @@ INSERT INTO public.specific_restaurant VALUES (9, 3, 8, 20000);
 -- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.tags VALUES (1, 'ayam                                                                                                ', 1);
-INSERT INTO public.tags VALUES (2, 'chicken food                                                                                        ', 1);
-INSERT INTO public.tags VALUES (3, 'susu                                                                                                ', 2);
-INSERT INTO public.tags VALUES (4, 'sapi                                                                                                ', 2);
-INSERT INTO public.tags VALUES (5, 'mie pedas                                                                                           ', 3);
-INSERT INTO public.tags VALUES (6, 'ayam                                                                                                ', 2);
+COPY public.tags (id_tag, tag_name, id_restaurant) FROM stdin;
+1	ayam                                                                                                	1
+2	chicken food                                                                                        	1
+3	susu                                                                                                	2
+4	sapi                                                                                                	2
+5	mie pedas                                                                                           	3
+6	ayam                                                                                                	2
+\.
 
 
 --
@@ -623,7 +633,7 @@ ALTER TABLE ONLY public.tags
     ADD CONSTRAINT tags_id_restaurant_fkey FOREIGN KEY (id_restaurant) REFERENCES public.restaurants(id_restaurant);
 
 
--- Completed on 2020-10-13 11:10:29 WIB
+-- Completed on 2020-10-13 11:13:04 WIB
 
 --
 -- PostgreSQL database dump complete
