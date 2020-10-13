@@ -3,6 +3,7 @@ var router = express.Router();
 
 module.exports = function (pool) {
 
+  // Get List Menu Restaurant
   router.get('/restaurant/:id', function (req, res, next) {
     let id = req.params.id;
 
