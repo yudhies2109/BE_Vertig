@@ -7,14 +7,13 @@ this is nodelist API with nodejs as a programming language & postgreSQL as datab
 
 > git clone or download this repo
 
-## Database Side
-
-> databases attached in folder 'databases'
-> import database 
-
 ## Server Side
 
 > npm Run Dev
+
+## Client Side
+
+> npm Start
 
 > input with postman or siiliar applications
 
